@@ -108,7 +108,7 @@ resource "aws_docdb_subnet_group" "default" {
 # https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-parameter-group-create.html
 resource "aws_docdb_cluster_parameter_group" "default" {
   count       = module.this.enabled ? 1 : 0
-  name        = module.this.id
+  name        = "${module.this.id}-${var.engine_version}"
   description = "DB cluster parameter group"
   family      = var.cluster_family
 
